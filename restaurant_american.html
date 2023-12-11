@@ -1,0 +1,37 @@
+1) Find the restaurants that do not prepare any cuisine of 'American' and have a grade score more than 70 and latitude less than -65.754168:
+
+db.restaurants.find({
+  "cuisine": { $ne: "American" },
+  "grades.score": { $gt: 70 },
+  "latitude": { $lt: -65.754168 }
+});
+
+2) Find the restaurants which do not prepare any cuisine of 'American' and achieved a score more than 70 and are located in the longitude less than -65.754168:
+
+db.restaurants.find({
+  "cuisine": { $ne: "American" },
+  "grades.score": { $gt: 70 },
+  "longitude": { $lt: -65.754168 }
+});
+
+3) Find the restaurants which do not prepare any cuisine of 'American' and achieved a grade point 'A' but do not belong to the borough Brooklyn. Display the documents according to the cuisine in descending order:
+
+db.restaurants.find({
+  "cuisine": { $ne: "American" },
+  "grades.grade": "A",
+  "borough": { $ne: "Brooklyn" }
+}).sort({ "cuisine": -1 });
+
+4)Find the restaurant Id, name, borough, and cuisine for those restaurants which contain 'Wil' as the first three letters for its name:
+
+db.restaurants.find(
+  { "name": { $regex: /^Wil/i } },
+  { "restaurant_id": 1, "name": 1, "borough": 1, "cuisine": 1, "_id": 0 }
+);
+
+5)Find the restaurant Id, name, borough, and cuisine for those restaurants which contain 'ces' as the last three letters for its name:
+
+db.restaurants.find(
+  { "name": { $regex: /ces$/i } },
+  { "restaurant_id": 1, "name": 1, "borough": 1, "cuisine": 1, "_id": 0 }
+);

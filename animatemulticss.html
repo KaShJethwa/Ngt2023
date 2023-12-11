@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Animation</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #animatedBox {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+
+<div id="animatedBox"></div>
+
+<script>
+  $(document).ready(function() {
+    // Select the element to be animated
+    var animatedBox = $('#animatedBox');
+
+    // Define the animation properties
+    var properties = {
+      width: '200px',
+      height: '200px',
+      opacity: 0.5
+    };
+
+    // Set the duration of the animation
+    var duration = 1000; // 1000 milliseconds (1 second)
+
+    // Set the easing function for the animation (optional)
+    var easing = 'swing';
+
+    // Use the animate() method to animate the properties
+    animatedBox.animate(properties, duration, easing);
+  });
+</script>
+
+</body>
+</html>

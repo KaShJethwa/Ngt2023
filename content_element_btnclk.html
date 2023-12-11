@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Change Text Content on Button Click</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<p id="targetElement">This is the initial text.</p>
+<button id="changeTextButton">Change Text</button>
+
+<script>
+  $(document).ready(function() {
+    // Button click event
+    $("#changeTextButton").click(function() {
+      // Change the text content of the target element
+      $("#targetElement").text("New text after button click!");
+    });
+  });
+</script>
+
+</body>
+</html>

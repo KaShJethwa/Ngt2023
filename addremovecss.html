@@ -1,0 +1,49 @@
+<!-- add_remove_classes_example.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Add/Remove Classes Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+    .italic {
+      font-style: italic;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      // Add Class on Button Click
+      $("#btn-add-class").click(function() {
+        // Add class "highlight" to elements with class "add-remove-target"
+        $(".add-remove-target").addClass("highlight");
+      });
+
+      // Remove Class on Button Click
+      $("#btn-remove-class").click(function() {
+        // Remove class "highlight" from elements with class "add-remove-target"
+        $(".add-remove-target").removeClass("highlight");
+      });
+
+      // Toggle Class on Button Click
+      $("#btn-toggle-class").click(function() {
+        // Toggle class "italic" on elements with class "add-remove-target"
+        $(".add-remove-target").toggleClass("italic");
+      });
+    });
+  </script>
+</head>
+<body>
+
+<button id="btn-add-class">Add Highlight Class</button>
+<button id="btn-remove-class">Remove Highlight Class</button>
+<button id="btn-toggle-class">Toggle Italic Class</button>
+
+<p class="add-remove-target">This is a paragraph with the class "add-remove-target".</p>
+<span class="add-remove-target">This is a span with the class "add-remove-target".</span>
+
+</body>
+</html>

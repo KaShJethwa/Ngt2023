@@ -1,0 +1,50 @@
+<!-- slide_effects_example.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Slide Effects Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #content {
+      width: 200px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      display: none; /* Initially hide the content */
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      // Slide Down
+      $("#btn-slide-down").click(function() {
+        $("#content").slideDown("slow");
+      });
+
+      // Slide Up
+      $("#btn-slide-up").click(function() {
+        $("#content").slideUp("slow");
+      });
+
+      // Slide Toggle
+      $("#btn-slide-toggle").click(function() {
+        $("#content").slideToggle("slow");
+      });
+    });
+  </script>
+</head>
+<body>
+
+<button id="btn-slide-down">Slide Down</button>
+<button id="btn-slide-up">Slide Up</button>
+<button id="btn-slide-toggle">Slide Toggle</button>
+
+<div id="content">
+  <p>This is some content that can be slid up or down.</p>
+</div>
+
+</body>
+</html>

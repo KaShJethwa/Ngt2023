@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<!-- Example element to demonstrate slide toggle effect -->
+<div id="exampleDiv" style="width: 100px; height: 100px; background-color: lightblue; display: none;"></div>
+
+<!-- Button to trigger slide toggle effect -->
+<button id="slideToggleButton">Toggle Slide</button>
+
+<script>
+  $(document).ready(function() {
+    // Set the duration for slide toggle effect (500 milliseconds)
+    var slideToggleDuration = 500;
+
+    // Toggle slide effect
+    $("#slideToggleButton").click(function() {
+      $("#exampleDiv").slideToggle(slideToggleDuration);
+    });
+  });
+</script>
+
+</body>
+</html>

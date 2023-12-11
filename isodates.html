@@ -1,0 +1,110 @@
+[
+  {
+    "restaurant_id": "1",
+    "name": "Italian Delight",
+    "borough": "Manhattan",
+    "cuisine": "Italian",
+    "grades": [
+      {"grade": "A", "score": 90, "date": ISODate("2014-08-11T00:00:00Z")},
+      {"grade": "B", "score": 85, "date": ISODate("2014-08-20T00:00:00Z")}
+    ],
+    "address": {"coord": [40.742933, -73.989829]}
+  },
+  {
+    "restaurant_id": "2",
+    "name": "Mexican Flavors",
+    "borough": "Queens",
+    "cuisine": "Mexican",
+    "grades": [
+      {"grade": "A", "score": 88, "date": ISODate("2014-08-11T00:00:00Z")},
+      {"grade": "C", "score": 75, "date": ISODate("2014-08-18T00:00:00Z")}
+    ],
+    "address": {"coord": [40.638633, -73.958933]}
+  },
+  {
+    "restaurant_id": "3",
+    "name": "Brooklyn Bistro",
+    "borough": "Brooklyn",
+    "cuisine": "French",
+    "grades": [
+      {"grade": "A", "score": 92, "date": ISODate("2014-08-11T00:00:00Z")},
+      {"grade": "B", "score": 80, "date": ISODate("2014-08-15T00:00:00Z")}
+    ],
+    "address": {"coord": [40.668433, -73.985656]}
+  },
+  {
+    "restaurant_id": "4",
+    "name": "Wilshire Grill",
+    "borough": "Manhattan",
+    "cuisine": "Steakhouse",
+    "grades": [
+      {"grade": "A", "score": 11, "date": ISODate("2014-08-11T00:00:00Z")},
+      {"grade": "B", "score": 78, "date": ISODate("2014-08-25T00:00:00Z")}
+    ],
+    "address": {"coord": [40.754567, -73.98795]}
+  },
+  {
+    "restaurant_id": "5",
+    "name": "Cesare's Pizzeria",
+    "borough": "Bronx",
+    "cuisine": "Pizza",
+    "grades": [
+      {"grade": "A", "score": 85, "date": ISODate("2014-08-11T00:00:00Z")},
+      {"grade": "C", "score": 70, "date": ISODate("2014-08-16T00:00:00Z")}
+    ],
+    "address": {"coord": [40.85472, -73.864331]}
+  }
+]
+
+
+// how to do--
+
+mongod
+mongoimport --db testdb --collection restaurant1 --file "C:/_/_.json" --jsonArray
+
+ctrl+c
+
+mongo
+use testdb
+db.restaurant1.find()
+
+1) Find the restaurant Id, name, borough, and cuisine for those restaurants which prepared dishes except 'American' and 'Chinese' or the restaurant's name begins with the letter 'Wil':
+
+db.restaurants.find({
+  $or: [
+    { "cuisine": { $nin: ["American", "Chinese"] } },
+    { "name": { $regex: /^Wil/i } }
+  ]
+}, { "restaurant_id": 1, "name": 1, "borough": 1, "cuisine": 1, "_id": 0 });
+
+2) Find the restaurant Id, name, and grades for those restaurants which achieved a grade of "A" and scored 11 on an ISODate "2014-08-11T00:00:00Z":
+
+db.restaurants.find({
+  "grades": {
+    $elemMatch: {
+      "grade": "A",
+      "score": 11,
+      "date": ISODate("2014-08-11T00:00:00Z")
+    }
+  }
+}, { "restaurant_id": 1, "name": 1, "grades": 1, "_id": 0 });
+
+3) Find the restaurant Id, name, and grades for those restaurants where the 2nd element of the grades array contains a grade of "A" and a score of 9 on an ISODate "2014-08-11T00:00:00Z":
+
+db.restaurants.find({
+  "grades.1": {
+    "grade": "A",
+    "score": 9,
+    "date": ISODate("2014-08-11T00:00:00Z")
+  }
+}, { "restaurant_id": 1, "name": 1, "grades": 1, "_id": 0 });
+
+4) Find the restaurant Id, name, address, and geographical location for those restaurants where the 2nd element of the coord array contains a value which is more than 42 and up to 52:
+
+db.restaurants.find({
+  "address.coord.1": { $gt: 42, $lte: 52 }
+}, { "restaurant_id": 1, "name": 1, "address": 1, "_id": 0 });
+
+5) Write a MongoDB query to arrange the name of the restaurants in ascending order along with all the columns:
+
+db.restaurants.find({}, { "_id": 0 }).sort({ "name": 1 });

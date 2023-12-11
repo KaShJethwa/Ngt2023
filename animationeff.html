@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Animation Effects</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #animated-box {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      margin: 20px;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      // Slide Up and Down
+      $("#btn-slide-up").click(function() {
+        $("#animated-box").slideUp("slow");
+      });
+
+      $("#btn-slide-down").click(function() {
+        $("#animated-box").slideDown("slow");
+      });
+
+      // Fade In and Out
+      $("#btn-fade-in").click(function() {
+        $("#animated-box").fadeIn("slow");
+      });
+
+      $("#btn-fade-out").click(function() {
+        $("#animated-box").fadeOut("slow");
+      });
+
+      // Animate
+      $("#btn-animate").click(function() {
+        $("#animated-box").animate({
+          width: '200px',
+          height: '200px',
+          marginLeft: '50px',
+          backgroundColor: '#e74c3c'
+        }, "slow");
+      });
+    });
+  </script>
+</head>
+<body>
+
+<button id="btn-slide-up">Slide Up</button>
+<button id="btn-slide-down">Slide Down</button>
+<button id="btn-fade-in">Fade In</button>
+<button id="btn-fade-out">Fade Out</button>
+<button id="btn-animate">Animate</button>
+
+<div id="animated-box"></div>
+
+</body>
+</html>

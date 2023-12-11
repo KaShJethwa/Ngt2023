@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<div id="exampleDiv">
+  <p>This is a paragraph.</p>
+  <span>This is a span.</span>
+</div>
+
+<button id="removeButton">Remove Element</button>
+
+<script>
+  $(document).ready(function() {
+    // Remove the div and its contents when the button is clicked
+    $("#removeButton").click(function() {
+      $("#exampleDiv").remove();
+    });
+  });
+</script>
+
+</body>
+</html>

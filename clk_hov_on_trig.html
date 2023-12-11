@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Events</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #target {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      margin: 20px;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      // Click event
+      $("#target").click(function() {
+        $(this).css("background-color", "red");
+      });
+
+      // Hover event
+      $("#target").hover(
+        function() {
+          $(this).css("opacity", "0.8");
+        },
+        function() {
+          $(this).css("opacity", "1.0");
+        }
+      );
+
+      // On and Trigger events
+      $("#btn-on").on("click", function() {
+        $("#target").trigger("click");
+      });
+
+      // Off event
+      $("#btn-off").on("click", function() {
+        $("#target").off("click");
+      });
+    });
+  </script>
+</head>
+<body>
+
+<div id="target"></div>
+<button id="btn-on">Trigger Click Event</button>
+<button id="btn-off">Turn Off Click Event</button>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Elements with class "myClass" -->
+<div class="myClass">Element with class</div>
+
+<!-- Element with ID "myId" -->
+<div id="myId">Element with ID</div>
+
+<!-- Elements with name "myName" -->
+<input type="text" name="myName" value="Element with name">
+
+<script>
+  // Select by class name and add a highlight class
+  $(".myClass").addClass("highlight");
+
+  // Select by ID and change text color
+  $("#myId").css("color", "blue");
+
+  // Select by element name and change the background color
+  $("[name='myName']").css("background-color", "green");
+
+  // Additional Example: Select all paragraphs and hide them
+  $("p").hide();
+</script>
+
+</body>
+</html>

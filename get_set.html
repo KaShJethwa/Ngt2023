@@ -1,0 +1,55 @@
+//set
+
+
+<html>
+<head>
+<title>KARAN JETHWA</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+ $("#btn1").click(function(){
+  $("#test1").text($("#test3").val());
+  });
+ $("#btn2").click(function(){
+  $("#test2").html($("#test3").val());
+  });
+ $("#btn3").click(function(){
+  $("#test3").val("Value changed.");
+ });
+});
+</script>
+</head>
+<body>
+<p id="test1">change my text.</p>
+<p id="test2">change my html.</p>
+<p>Change my value: <input type="text" id="test3" value="Mickey Mouse"></p>
+<button id="btn1">Set Text</button>
+<button id="btn2">Set HTML</button>
+<button id="btn3">Set Value</button>
+</body>
+</html>
+
+//get
+
+
+<html>
+<head>
+<title>KARAN JETHWA</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+ $("#btn1").click(function(){
+   alert("Text: " + $("#myh2").text());
+   });
+ $("#btn2").click(function(){
+   alert("HTML: " + $("#myh2").html());
+  });
+ });
+</script>
+</head>
+<body>
+<h2 id="myh2">This is h2 with <i>Italic,</i><b>Bold</b>, and <u>Underline</u> fonts.</h2>
+<button id="btn1">Show Text"</button>
+<button id="btn2">Show HTML"</button>
+</body>
+</html>

@@ -1,0 +1,66 @@
+First, create a JSON file named "restaurant.json" with sample data:
+
+json
+Copy code
+[
+  {
+    "restaurant_id": "1",
+    "name": "Restaurant 1",
+    "borough": "Bronx",
+    "cuisine": "Italian",
+    "address": {
+      "zipcode": "10458"
+    }
+  },
+  {
+    "restaurant_id": "2",
+    "name": "Restaurant 2",
+    "borough": "Manhattan",
+    "cuisine": "French",
+    "address": {
+      "zipcode": "10001"
+    }
+  },
+  {
+    "restaurant_id": "3",
+    "name": "Restaurant 3",
+    "borough": "Bronx",
+    "cuisine": "Mexican",
+    "address": {
+      "zipcode": "10472"
+    }
+  }
+]
+
+mongod
+mongoimport --db testdb --collection restaurant1 --file "C:/KARAN/Access/lat_long_restaurant.json" --jsonArray
+
+mongo
+use testdb
+db.restaurants.find()
+
+Now, you can insert this data into MongoDB and perform the requested queries:
+
+
+
+restaurants
+
+//1display all doc
+
+db.restaurants.find()
+
+//2 diplay specific fields
+
+db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })
+
+//3 
+db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })
+
+//Query 4: Display Specific Fields (restaurant_id, name, borough, zip code) excluding _id
+
+db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, "address.zipcode": 1, _id: 0 })
+
+//Query 5: Display Restaurants in the Borough Bronx
+
+db.restaurants.find({ borough: "Bronx" })
+

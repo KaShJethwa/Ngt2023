@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Fade In/Out</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #target {
+      width: 200px;
+      height: 200px;
+      background-color: #3498db;
+      margin: 20px;
+      display: none; /* Initially hidden */
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      // Fade In Effect
+      $("#btn-fade-in").click(function() {
+        $("#target").fadeIn("slow");
+      });
+
+      // Fade Out Effect
+      $("#btn-fade-out").click(function() {
+        $("#target").fadeOut("slow");
+      });
+    });
+  </script>
+</head>
+<body>
+
+<button id="btn-fade-in">Fade In</button>
+<button id="btn-fade-out">Fade Out</button>
+
+<div id="target"></div>
+
+</body>
+</html>
